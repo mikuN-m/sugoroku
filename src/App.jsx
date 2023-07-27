@@ -1,13 +1,18 @@
 import React from "react"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import Top from './pages/top'
+import Setting from './pages/setting'
 
 class App extends React.Component {
   render(){
     return(
-      <div>
-        <div className="test">
-          <h1>hello</h1>
-        </div>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Top />} />
+          <Route path="/setting" element={<Setting />} />
+        </Routes>
+      </BrowserRouter>
     )
   }
 }
