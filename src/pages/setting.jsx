@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Setting extends React.Component {
 
@@ -93,12 +94,20 @@ class Setting extends React.Component {
 
 
         const start = () => {
-
-                localStorage.setItem(
-                    members,
-                    this.state.member[i]
-                );
+            for(let i=0; i<this.state.num; i++){
+                localStorage.setItem(this.state.member[i], this.state.color[i]);
+            }
         };
+
+        const reset = () => {
+            this.setState({
+                num: 0,
+                member: [],
+                color: []
+            });
+
+            location.reload();
+        }
 
         return(
             <div>
@@ -152,8 +161,8 @@ class Setting extends React.Component {
                     {members}
 
                     <div className="btn-box">
-                        <button type="button" className="btn">やりなおし</button>
-                        <button type="button" className="btn" onClick={()=>{start()}}>はじめる</button>
+                        <Link className="btn" onClick={()=>{reset()}}>やりなおし</Link>
+                        <Link className="btn" to={'/game'} onClick={()=>{start()}}>はじめる</Link>
                     </div>
 
                 </div>
