@@ -15,7 +15,7 @@ a, .btn {
     border-radius: 20px;
     padding: 10px 20px;
     background-color: $bacColor;
-    box-shadow: -4px -4px 8px #fffffd, 4px 4px 8px #50505096;
+    box-shadow: -4px -4px 8px #cbd6f5, 4px 4px 8px #50505096;
     transition: .3s all;
 
     &:hover {
@@ -122,4 +122,27 @@ a, .btn {
         display: flex;
         justify-content: space-around;
     }
+}
+
+.null-content {
+    text-align: center;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+
+    p {
+        margin-bottom: 20px;
+    }
+}
+
+.rule-content {
+    text-align: center;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+}
+
+#game-container {
+    display: none;
 }

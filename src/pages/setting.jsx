@@ -14,10 +14,14 @@ class Setting extends React.Component {
     }
 
     render(){
+
+        localStorage.clear()
         
         const nameShow = [];
         const colorShow = [];
 
+
+        //人数をstateにセット 詳しい設定フォームを表示
         const numSubmit = (e) => {
             e.preventDefault();
             
@@ -32,6 +36,8 @@ class Setting extends React.Component {
             numSettingForm.style.display = 'none';
         }
 
+
+        //人数に応じてフォームを増やす
         let i = 0;
         while (i < this.state.num) {
             nameShow.push(
@@ -56,6 +62,8 @@ class Setting extends React.Component {
             i++;
         }
 
+
+        //詳しい設定をstateにセット 確認画面表示
         const settingSubmit = (e) => {
             e.preventDefault();
 
@@ -82,6 +90,8 @@ class Setting extends React.Component {
         }
 
 
+
+        //確認画面
         let members = [];
 
         for(let i=0; i<this.state.num; i++){
@@ -93,12 +103,15 @@ class Setting extends React.Component {
         }
 
 
+        //ローカルストレージに追加
         const start = () => {
             for(let i=0; i<this.state.num; i++){
-                localStorage.setItem(this.state.member[i], this.state.color[i]);
+                localStorage.setItem(`name${i+1}`, this.state.member[i]);
+                localStorage.setItem(`color${i+1}`, this.state.color[i]);
             }
         };
 
+        //stateをリセットしてやり直し
         const reset = () => {
             this.setState({
                 num: 0,
