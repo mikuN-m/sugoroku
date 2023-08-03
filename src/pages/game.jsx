@@ -14,8 +14,18 @@ class Game extends React.Component {
         }
     }
 
+    componentDidMount(){
+        const name = Object.keys(localStorage).filter(key => /^name/.test(key)).map(key => localStorage.getItem(key));
+        const color = Object.keys(localStorage).filter(key => /^color/.test(key)).map(key => localStorage.getItem(key));
+        this.setState({
+            name: name,
+            color: color
+        });
+    }
+
     // mmemo
     // マス目にクラスをつけて、マスごとにどっちに移動するかanimationをつける
+    // その人の番のとき、名前等を強調する
 
     render(){
 
@@ -29,23 +39,22 @@ class Game extends React.Component {
         }
 
 
-        //ローカルストレージから情報を取得 
+        //
+        const nameShow = [];
         const test = () => {
-            const name = Object.keys(localStorage).filter(key => /^name/.test(key)).map(key => localStorage.getItem(key));
-            const color = Object.keys(localStorage).filter(key => /^color/.test(key)).map(key => localStorage.getItem(key));
-            this.setState({
-                name: name,
-                color: color
-            });
-
             const gameContainer = document.getElementById('game-container');
+            const ruleContent = document.getElementById('rule-content');
             gameContainer.style.display = 'block';
+            ruleContent.style.display = 'none';
         };
         
-
-        const textColor = document.getElementsByClassName('text-color');
         for(let i=0; i<this.state.name.length; i++){
-            textColor[i].style.color = this.state.color[i];
+            nameShow.push(
+                <p>
+                    <span>{i + 1}.</span>
+                    <span style={{color: this.state.color[i]}}>{this.state.name[i]}</span>
+                </p>
+            );
         }
 
 
@@ -64,10 +73,10 @@ class Game extends React.Component {
 
                     <div>
 
-                        <div className="rule-content">
+                        <div id="rule-content">
 
                             <div>
-                                <h3>ルール</h3>
+                                <h1>ルール</h1>
                                 <p>先にゴールしたほうがかち！がんばって！</p>
                                 <button type="button" className="btn" onClick={()=>{test()}}>
                                     start
@@ -77,8 +86,13 @@ class Game extends React.Component {
                         </div>
 
                         <div id="game-container">
-                            <p className="text-color">{this.state.name[0]}</p>
-                            <p className="text-color">{this.state.name[1]}</p>
+
+                            <div className="name-box">
+
+                                {nameShow}
+
+                            </div>
+
                         </div>
                     
                     </div>
