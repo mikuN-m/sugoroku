@@ -23,7 +23,7 @@ class Game extends React.Component {
         });
     }
 
-    // mmemo
+    // memo
     // マス目にクラスをつけて、マスごとにどっちに移動するかanimationをつける
     // その人の番のとき、名前等を強調する
 
@@ -39,7 +39,7 @@ class Game extends React.Component {
         }
 
 
-        //
+        //名前表示
         const nameShow = [];
         const test = () => {
             const gameContainer = document.getElementById('game-container');
@@ -55,6 +55,16 @@ class Game extends React.Component {
                     <span style={{color: this.state.color[i]}}>{this.state.name[i]}</span>
                 </p>
             );
+        }
+
+
+        //ランダムさいころ
+        const diceImgs = ['dice1.png','dice2.png','dice3.png','dice4.png','dice5.png','dice6.png'];
+        const diceRandom = () => {
+            const diceNam = Math.floor(Math.random() * diceImgs.length);
+            const diceBox = document.getElementsByClassName('dice-img');
+
+            diceBox[0].style.backgroundImage = `url(${diceImgs[diceNam]})`;
         }
 
 
@@ -92,6 +102,22 @@ class Game extends React.Component {
                                 {nameShow}
 
                             </div>
+
+                            <div className="dice-content">
+
+                                <button className="btn" onClick={()=>{diceRandom()}}>ダイスを振る</button>
+
+                                <div className="dice-img">
+                                    
+                                </div>
+
+                            </div>
+
+                            <div className="game-container">
+
+                                <div className=""></div>
+
+                            </div>                            
 
                         </div>
                     

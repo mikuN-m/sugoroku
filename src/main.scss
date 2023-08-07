@@ -1,5 +1,3 @@
-$bacColor: #ffffff;
-
 body {
     width: 100%;
     height: 100vh;
@@ -8,22 +6,26 @@ body {
     color: rgb(36, 36, 36);
 }
 
+img {
+    width: 100%;
+}
+
 a, .btn {
     color: rgb(36, 36, 36);
     text-decoration: none;
     font-weight: bold;
     border-radius: 20px;
     padding: 10px 20px;
-    background-color: $bacColor;
+    background-color: #ffffff;
     box-shadow: -4px -4px 8px #cbd6f5, 4px 4px 8px #50505096;
     transition: .3s all;
 
     &:hover {
-        box-shadow: -2px -2px 5px #fffffd, 2px 2px 5px #50505096;
+        box-shadow: -2px -2px 5px #cbd6f5, 2px 2px 5px #50505096;
     }
 
     &:active {
-        background-color: #fffffd;
+        background-color: #e0e5f1;
         box-shadow: inset 4px 4px 8px #50505096;
     }
 }
@@ -168,5 +170,29 @@ a, .btn {
         p {
             font-size: 3rem;
         }
+    }
+}
+
+
+.dice-content {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 140px;
+    text-align: center;
+
+    button {
+        margin-bottom: 10px;
+    }
+
+    .dice-img {
+        width: 100%;
+        aspect-ratio: 1;
+        border: 1px solid rgb(29, 28, 56);
+        border-radius: 5px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(dice1.png);
     }
 }
