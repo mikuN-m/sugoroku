@@ -75,8 +75,8 @@ class Setting extends React.Component {
                 colorBox.push(e.target.color[i].value);
             }
 
-            document.getElementById('setting-check').style.display = 'block';
-            document.getElementById('setting-form').style.display = 'none';
+            document.getElementById('setting-check').style.display = 'grid';
+            document.getElementById('setting-form-box').style.display = 'none';
 
             this.setState({
                 member: memberBox,
@@ -125,11 +125,7 @@ class Setting extends React.Component {
         return(
             <div>
 
-                <div className="titel">
-                    <h1>せってい</h1>
-                </div>
-
-                <div className="setting-wrapper">
+                <div className="setting-wrapper" id="setting-form-box">
 
                     <form onSubmit={numSubmit} id="num-setting-form">
 
@@ -176,7 +172,7 @@ class Setting extends React.Component {
                     <div className="btn-box">
                         <Link className="btn" onClick={()=>{reset()}}>やりなおし</Link>
                         <Link className="btn" to={'/game'} onClick={()=>{start()}}>はじめる</Link>
-                    </div>
+                    </div>                 
 
                 </div>
 

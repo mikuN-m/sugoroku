@@ -41,6 +41,7 @@ class Game extends React.Component {
 
         //名前表示
         const nameShow = [];
+        const player = [];
         const test = () => {
             const gameContainer = document.getElementById('game-container');
             const ruleContent = document.getElementById('rule-content');
@@ -54,6 +55,11 @@ class Game extends React.Component {
                     <span>{i + 1}.</span>
                     <span style={{color: this.state.color[i]}}>{this.state.name[i]}</span>
                 </p>
+            );
+            player.push(
+                <div className="player" id={`player${i+1}`} style={{backgroundColor: this.state.color[i]}}>
+                    {this.state.name[i]}
+                </div>
             );
         }
 
@@ -95,7 +101,13 @@ class Game extends React.Component {
                             
                         </div>
 
+
+                        
+
+
                         <div id="game-container">
+
+                            {player}
 
                             <div className="name-box">
 
@@ -113,9 +125,39 @@ class Game extends React.Component {
 
                             </div>
 
-                            <div className="game-container">
+                            <div className="game-space-content">
 
-                                <div className=""></div>
+                                <div className="space-box">
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                </div>
+
+                                <div className="space-box right">
+                                    <div className="space"></div>
+                                </div> 
+
+                                <div className="space-box">
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                </div>
+
+                                <div className="space-box left">
+                                    <div className="space"></div>
+                                </div> 
+
+                                <div className="space-box">
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                    <div className="space"></div>
+                                </div>
 
                             </div>                            
 

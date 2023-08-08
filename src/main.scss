@@ -1,6 +1,5 @@
 body {
     width: 100%;
-    height: 100vh;
     background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     font-family: 'Zen Kurenaido', sans-serif;
     color: rgb(36, 36, 36);
@@ -17,26 +16,16 @@ a, .btn {
     border-radius: 20px;
     padding: 10px 20px;
     background-color: #ffffff;
-    box-shadow: -4px -4px 8px #cbd6f5, 4px 4px 8px #50505096;
+    box-shadow: -4px -4px 8px #bcceff, 4px 4px 8px #50505096;
     transition: .3s all;
 
     &:hover {
-        box-shadow: -2px -2px 5px #cbd6f5, 2px 2px 5px #50505096;
+        box-shadow: -2px -2px 5px #bcceff, 2px 2px 5px #50505096;
     }
 
     &:active {
         background-color: #e0e5f1;
         box-shadow: inset 4px 4px 8px #50505096;
-    }
-}
-
-.titel {
-    text-align: center;
-    height: 20vh;
-    display: grid;
-    place-items: center;
-    h1 {
-        font-size: 3rem;
     }
 }
 
@@ -62,7 +51,8 @@ a, .btn {
 
 .setting-wrapper {
     width: 70%;
-    margin: 0 auto 50px;
+    height: 100vh;
+    margin: 0 auto;
     display: grid;
     place-items: center;
     text-align: center;
@@ -108,7 +98,9 @@ a, .btn {
 
 #setting-check {
     display: none;
+    height: 100vh;
     text-align: center;
+    place-items: center;
 
     h2 {
         font-size: 2rem;
@@ -123,7 +115,8 @@ a, .btn {
         margin: 50px auto 0;
         display: flex;
         justify-content: space-around;
-    }
+    }    
+
 }
 
 .null-content {
@@ -163,7 +156,8 @@ a, .btn {
 
     .name-box {
         width: 70%;
-        margin: 40px auto;
+        margin: 0 auto;
+        padding: 40px 0;
         display: flex;
         justify-content: space-around;
 
@@ -171,6 +165,41 @@ a, .btn {
             font-size: 3rem;
         }
     }
+}
+
+
+.player {
+    position: absolute;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid black;
+    cursor: pointer;
+
+    &:hover {
+        cursor: grab;
+    }
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+#player1 {
+    top: 160px;
+    left: 290px;
+}
+#player2 {
+    top: 210px;
+    left: 290px;
+}
+#player3 {
+    top: 160px;
+    left: 360px;
+}
+#player4 {
+    top: 210px;
+    left: 360px;
 }
 
 
@@ -195,4 +224,37 @@ a, .btn {
         background-repeat: no-repeat;
         background-image: url(dice1.png);
     }
+}
+
+
+.game-space-content {
+    width: 800px;
+    margin: 0 auto;
+    position: relative;
+
+    .space {
+        width: 150px;
+        aspect-ratio: 1.5;
+        border-radius: 3px;
+        border: 1px solid black;
+    }
+
+    .space-box{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+    }
+
+    .right {
+        margin: 5px 0;
+        justify-content: right;
+    }
+
+    .left {
+        margin: 5px 0;
+        justify-content: left;
+    }
+
+    
 }
