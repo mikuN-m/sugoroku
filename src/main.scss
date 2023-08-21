@@ -168,41 +168,6 @@ a, .btn {
 }
 
 
-.player {
-    position: absolute;
-    z-index: 10;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    border: 1px solid black;
-    cursor: pointer;
-
-    &:hover {
-        cursor: grab;
-    }
-    &:active {
-        cursor: grabbing;
-    }
-}
-
-#player1 {
-    top: 160px;
-    left: 290px;
-}
-#player2 {
-    top: 210px;
-    left: 290px;
-}
-#player3 {
-    top: 160px;
-    left: 360px;
-}
-#player4 {
-    top: 210px;
-    left: 360px;
-}
-
-
 .dice-content {
     position: fixed;
     bottom: 20px;
@@ -212,6 +177,10 @@ a, .btn {
 
     button {
         margin-bottom: 10px;
+    }
+
+    .dice-btn {
+        display: none;
     }
 
     .dice-img {
@@ -237,6 +206,33 @@ a, .btn {
         aspect-ratio: 1.5;
         border-radius: 3px;
         border: 1px solid black;
+        position: relative;
+
+        .player {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            border: 1px solid black;
+            display: none;
+        }
+        
+        #player1 {
+            top: 5px;
+            left: 5px;
+        }
+        #player2 {
+            top: 50px;
+            left: 5px;
+        }
+        #player3 {
+            top: 5px;
+            left: 60px;
+        }
+        #player4 {
+            top: 50px;
+            left: 60px;
+        }
     }
 
     .space-box{

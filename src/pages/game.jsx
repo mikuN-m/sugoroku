@@ -7,10 +7,9 @@ class Game extends React.Component {
         this.state = {
             name: [],
             color: [],
-            space1: 0,
-            space2: 0,
-            space3: 0,
-            space4: 0
+            x: 0,
+            y: 0,
+            space: [0,0,0,0]
         }
     }
 
@@ -41,12 +40,15 @@ class Game extends React.Component {
 
         //名前表示
         const nameShow = [];
-        const player = [];
-        const test = () => {
+        const start = () => {
             const gameContainer = document.getElementById('game-container');
             const ruleContent = document.getElementById('rule-content');
             gameContainer.style.display = 'block';
             ruleContent.style.display = 'none';
+
+            setTimeout(()=>{
+                step1();
+            },1000)
         };
         
         for(let i=0; i<this.state.name.length; i++){
@@ -56,22 +58,45 @@ class Game extends React.Component {
                     <span style={{color: this.state.color[i]}}>{this.state.name[i]}</span>
                 </p>
             );
-            player.push(
-                <div className="player" id={`player${i+1}`} style={{backgroundColor: this.state.color[i]}}>
-                    {this.state.name[i]}
-                </div>
-            );
-        }
+
+            document.getElementsByClassName('player')[i].style.display = 'block';
+        }            
 
 
-        //ランダムさいころ
+        let turn = 0;
+        const step1 = () => {
+            window.alert(`${this.state.name[turn]}さんのターンです\nダイスを振ってください`);
+            document.getElementsByClassName('dice-btn')[0].style.display = 'block';
+        };
+
+
         const diceImgs = ['dice1.png','dice2.png','dice3.png','dice4.png','dice5.png','dice6.png'];
-        const diceRandom = () => {
+        let dice = 0;
+        let newSpace = [this.state.space];
+        const step2 = () => {
             const diceNam = Math.floor(Math.random() * diceImgs.length);
             const diceBox = document.getElementsByClassName('dice-img');
 
             diceBox[0].style.backgroundImage = `url(${diceImgs[diceNam]})`;
-        }
+            dice = diceNam + 1;
+
+            document.getElementById('dice-btn').style.display = 'none';
+            document.getElementById('next-turn-btn').style.display = 'block';
+        }  
+
+
+        const spaceBox = document.getElementsByClassName('space');
+        const step3 = () => {
+            const newVal = newSpace[turn] + dice;
+            // newSpace[turn] = newVal;
+            // this.setState({
+            //     space: newSpace
+            // },()=>{
+                window.alert(newVal)
+            // });
+        };
+
+
 
 
         return(
@@ -94,7 +119,7 @@ class Game extends React.Component {
                             <div>
                                 <h1>ルール</h1>
                                 <p>先にゴールしたほうがかち！がんばって！</p>
-                                <button type="button" className="btn" onClick={()=>{test()}}>
+                                <button type="button" className="btn" onClick={()=>{start()}}>
                                     start
                                 </button>
                             </div>
@@ -107,8 +132,6 @@ class Game extends React.Component {
 
                         <div id="game-container">
 
-                            {player}
-
                             <div className="name-box">
 
                                 {nameShow}
@@ -117,7 +140,8 @@ class Game extends React.Component {
 
                             <div className="dice-content">
 
-                                <button className="btn" onClick={()=>{diceRandom()}}>ダイスを振る</button>
+                                <button className="btn dice-btn" id="dice-btn" onClick={()=>{step2()}}>ダイスを振る</button>
+                                <button className="btn dice-btn" id="next-turn-btn" onClick={()=>{step3()}}>ターンを進める</button>
 
                                 <div className="dice-img">
                                     
@@ -128,7 +152,39 @@ class Game extends React.Component {
                             <div className="game-space-content">
 
                                 <div className="space-box">
-                                    <div className="space"></div>
+                                    <div className="space">
+
+                                        <div   
+                                            className="player" 
+                                            id='player1' 
+                                            style={{backgroundColor: this.state.color[0]}}>
+
+                                            {this.state.name[0]}
+
+                                        </div>
+
+                                        <div 
+                                            className="player" 
+                                            id='player2'  
+                                            style={{backgroundColor: this.state.color[1]}}>
+                                            {this.state.name[1]}
+                                        </div>
+
+                                        <div 
+                                            className="player" 
+                                            id='player3'  
+                                            style={{backgroundColor: this.state.color[2]}}>
+                                            {this.state.name[2]}
+                                        </div>
+
+                                        <div 
+                                            className="player" 
+                                            id='player4'  
+                                            style={{backgroundColor: this.state.color[3]}}>
+                                            {this.state.name[3]}
+                                        </div>
+
+                                    </div>
                                     <div className="space"></div>
                                     <div className="space"></div>
                                     <div className="space"></div>
