@@ -92,9 +92,13 @@ class Game extends React.Component {
             this.setState({
                 space: newSpace[0]
             },()=>{
-                const nowSpace = document.getElementById(`space${this.state.space[this.state.turn]}`);
-
-                nowSpace.style.backgroundColor = this.state.color[this.state.turn];
+                const space = document.getElementsByClassName('space');
+                if (space.length <= this.state.space[this.state.turn]) {
+                    window.alert('ゴールしました');
+                } else {
+                    const nowSpace = document.getElementById(`space${this.state.space[this.state.turn]}`)
+                    nowSpace.style.backgroundColor = this.state.color[this.state.turn];
+                }
             });
 
             document.getElementById('turn-btn').style.display = 'none';
