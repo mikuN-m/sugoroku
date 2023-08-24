@@ -15,8 +15,18 @@ class Game extends React.Component {
     }
 
     componentDidMount(){
-        const name = Object.keys(localStorage).filter(key => /^name/.test(key)).map(key => localStorage.getItem(key));
-        const color = Object.keys(localStorage).filter(key => /^color/.test(key)).map(key => localStorage.getItem(key));
+        let name = [];
+        let color = [];
+
+        const localLen = localStorage.length / 2;
+        for (let i=0; i<localLen; i++) {
+            name.push(
+                localStorage.getItem(`name${i+1}`)
+            );
+            color.push(
+                localStorage.getItem(`color${i+1}`)
+            );
+        }
         this.setState({
             name: name,
             color: color
@@ -26,6 +36,7 @@ class Game extends React.Component {
     // memo
     // マス目にクラスをつけて、マスごとにどっちに移動するかanimationをつける
     // その人の番のとき、名前等を強調する
+    //  最初のspace以外にspace-gameというクラスをつけてspace.lengthに使う
 
     render(){
 
@@ -92,9 +103,9 @@ class Game extends React.Component {
             this.setState({
                 space: newSpace[0]
             },()=>{
-                const space = document.getElementsByClassName('space');
+                const space = document.getElementsByClassName('space-game');
                 if (space.length <= this.state.space[this.state.turn]) {
-                    window.alert('ゴールしました');
+                    window.alert(`${this.state.name[this.state.turn]}さんがゴールしました!!\nおめでとう!!`);
                 } else {
                     const nowSpace = document.getElementById(`space${this.state.space[this.state.turn]}`)
                     nowSpace.style.backgroundColor = this.state.color[this.state.turn];
@@ -120,8 +131,6 @@ class Game extends React.Component {
                 });
             }
         };
-
-
 
 
         return(
@@ -211,50 +220,50 @@ class Game extends React.Component {
                                         </div>
 
                                     </div>
-                                    <div className="space" id="space1"></div>
-                                    <div className="space" id="space2"></div>
-                                    <div className="space" id="space3"></div>
-                                    <div className="space" id="space4"></div>
+                                    <div className="space space-game" id="space1"></div>
+                                    <div className="space space-game" id="space2"></div>
+                                    <div className="space space-game" id="space3"></div>
+                                    <div className="space space-game" id="space4"></div>
                                 </div>
 
                                 <div className="space-box right">
-                                    <div className="space" id="space5"></div>
+                                    <div className="space space-game" id="space5"></div>
                                 </div> 
 
                                 <div className="space-box">
-                                    <div className="space" id="space10"></div>
-                                    <div className="space" id="space9"></div>
-                                    <div className="space" id="space8"></div>
-                                    <div className="space" id="space7"></div>
-                                    <div className="space" id="space6"></div>
+                                    <div className="space space-game" id="space10"></div>
+                                    <div className="space space-game" id="space9"></div>
+                                    <div className="space space-game" id="space8"></div>
+                                    <div className="space space-game" id="space7"></div>
+                                    <div className="space space-game" id="space6"></div>
                                 </div>
 
                                 <div className="space-box left">
-                                    <div className="space" id="space11"></div>
+                                    <div className="space space-game" id="space11"></div>
                                 </div> 
 
                                 <div className="space-box">
-                                    <div className="space" id="space12"></div>
-                                    <div className="space" id="space13"></div>
-                                    <div className="space" id="space14"></div>
-                                    <div className="space" id="space15"></div>
-                                    <div className="space" id="space16"></div>
+                                    <div className="space space-game" id="space12"></div>
+                                    <div className="space space-game" id="space13"></div>
+                                    <div className="space space-game" id="space14"></div>
+                                    <div className="space space-game" id="space15"></div>
+                                    <div className="space space-game" id="space16"></div>
                                 </div>
 
                                 <div className="space-box right">
-                                    <div className="space" id="space17"></div>
+                                    <div className="space space-game" id="space17"></div>
                                 </div> 
 
                                 <div className="space-box">
-                                    <div className="space" id="space21"></div>
-                                    <div className="space" id="space20"></div>
-                                    <div className="space" id="space19"></div>
-                                    <div className="space" id="space18"></div>
-                                    <div className="space" id="space17"></div>
+                                    <div className="space space-game" id="space21"></div>
+                                    <div className="space space-game" id="space20"></div>
+                                    <div className="space space-game" id="space19"></div>
+                                    <div className="space space-game" id="space18"></div>
+                                    <div className="space space-game" id="space17"></div>
                                 </div>
 
                                 <div className="space-box left">
-                                    <div className="space" id="space22">ゴール</div>
+                                    <div className="space space-game" id="space22">ゴール</div>
                                 </div> 
 
                             </div>                            
