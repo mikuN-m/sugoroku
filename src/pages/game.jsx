@@ -94,8 +94,7 @@ class Game extends React.Component {
 
             document.getElementById('dice-btn').style.display = 'none';
             document.getElementById('turn-btn').style.display = 'block';
-        }  
-
+        }
 
         const step3 = () => {
             const newVal = newSpace[0][this.state.turn] + dice;
@@ -106,6 +105,12 @@ class Game extends React.Component {
                 const space = document.getElementsByClassName('space-game');
                 if (space.length <= this.state.space[this.state.turn]) {
                     window.alert(`${this.state.name[this.state.turn]}さんがゴールしました!!\nおめでとう!!`);
+
+                    const goalResult = document.getElementsByClassName('goal-container');
+                    const resultName = document.getElementsByClassName('result-name');
+                    goalResult[0].style.display = 'flex';
+                    resultName[0].style.color = this.state.color[this.state.turn];
+
                 } else {
                     const nowSpace = document.getElementById(`space${this.state.space[this.state.turn]}`)
                     nowSpace.style.backgroundColor = this.state.color[this.state.turn];
@@ -135,6 +140,28 @@ class Game extends React.Component {
 
         return(
             <div>
+                
+                <div className="goal-container">
+                                    
+                    <div className="goal-wrapper">
+
+                        <div className="goal-result">
+
+                            <h1>終了!</h1>
+
+                            <h2><span className="result-name">{this.state.name[this.state.turn]}</span>さんの勝ち!</h2>
+
+                            <p>またあそんでね</p>
+
+                            <Link to={'/'} className="btn">最初に戻る</Link>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
                 {getStorage ? 
 
                     <div className="null-content">
@@ -255,15 +282,15 @@ class Game extends React.Component {
                                 </div> 
 
                                 <div className="space-box">
+                                    <div className="space space-game" id="space22"></div>
                                     <div className="space space-game" id="space21"></div>
                                     <div className="space space-game" id="space20"></div>
                                     <div className="space space-game" id="space19"></div>
                                     <div className="space space-game" id="space18"></div>
-                                    <div className="space space-game" id="space17"></div>
                                 </div>
 
                                 <div className="space-box left">
-                                    <div className="space space-game" id="space22">ゴール</div>
+                                    <div className="space space-game" id="space23">ゴール</div>
                                 </div> 
 
                             </div>                            
@@ -272,7 +299,7 @@ class Game extends React.Component {
                     
                     </div>
                 }
-                
+               
             </div>
         )
     }
